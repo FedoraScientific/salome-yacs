@@ -99,72 +99,74 @@ ENDIF(SALOME_BUILD_DOC)
 
 # --- rules ---
 SET(ENGINEINCLUDES 
-  Any.hxx     
-  DeploymentTree.hxx  
-  InputDataStreamPort.hxx         
-  OutPort.hxx               
-  SharedPtr.hxx 
-  AnyInputPort.hxx         
-  Dispatcher.hxx      
-  InputPort.hxx                   
-  OutputDataStreamPort.hxx  
-  StaticDefinedComposedNode.hxx 
-  Bloc.hxx                 
-  DynParaLoop.hxx     
-  InvalidExtractionException.hxx  
-  OutputPort.hxx            
-  Switch.hxx 
-  ComponentInstance.hxx    
-  ElementaryNode.hxx  
-  LinkInfo.hxx                    
-  Pool.hxx                  
-  Task.hxx 
-  ComposedNode.hxx         
-  Executor.hxx        
-  Logger.hxx                      
-  Port.hxx                  
-  TypeCode.hxx 
-  ConditionInputPort.hxx   
-  LogRecord.hxx                   
-  Proc.hxx                  
-  Visitor.hxx 
-  Container.hxx            
-  ForEachLoop.hxx     
-  Loop.hxx                        
-  RefCounter.hxx            
-  VisitorSaveSchema.hxx 
-  ConversionException.hxx  
-  ForLoop.hxx         
-  Node.hxx                        
-  Runtime.hxx               
-  VisitorSaveState.hxx 
-  DataFlowPort.hxx         
-  InGate.hxx          
-  OptimizerAlg.hxx                
-  Scheduler.hxx             
-  WhileLoop.hxx 
-  DataPort.hxx             
-  InlineNode.hxx      
-  OptimizerLoop.hxx               
-  ServiceInlineNode.hxx     
-  ComponentDefinition.hxx 
-  DataStreamPort.hxx       
-  InPort.hxx          
-  OutGate.hxx                     
-  ServiceNode.hxx           
-  Catalog.hxx  
-  PropertyInterface.hxx    
-  AnyOutputPort.hxx   
-  Pool.hxx
-  InPropertyPort.hxx
+  ../engine/Any.hxx     
+  ../engine/DeploymentTree.hxx  
+  ../engine/InputDataStreamPort.hxx         
+  ../engine/OutPort.hxx               
+  ../engine/SharedPtr.hxx 
+  ../engine/AnyInputPort.hxx         
+  ../engine/Dispatcher.hxx      
+  ../engine/InputPort.hxx                   
+  ../engine/OutputDataStreamPort.hxx  
+  ../engine/StaticDefinedComposedNode.hxx 
+  ../engine/Bloc.hxx                 
+  ../engine/DynParaLoop.hxx     
+  ../engine/InvalidExtractionException.hxx  
+  ../engine/OutputPort.hxx            
+  ../engine/Switch.hxx 
+  ../engine/ComponentInstance.hxx    
+  ../engine/ElementaryNode.hxx  
+  ../engine/LinkInfo.hxx                    
+  ../engine/Pool.hxx                  
+  ../engine/Task.hxx 
+  ../engine/ComposedNode.hxx         
+  ../engine/Executor.hxx        
+  ../engine/Logger.hxx                      
+  ../engine/Port.hxx                  
+  ../engine/TypeCode.hxx 
+  ../engine/ConditionInputPort.hxx   
+  ../engine/LogRecord.hxx                   
+  ../engine/Proc.hxx                  
+  ../engine/Visitor.hxx 
+  ../engine/Container.hxx            
+  ../engine/ForEachLoop.hxx     
+  ../engine/Loop.hxx                        
+  ../engine/RefCounter.hxx            
+  ../engine/VisitorSaveSchema.hxx 
+  ../engine/ConversionException.hxx  
+  ../engine/ForLoop.hxx         
+  ../engine/Node.hxx                        
+  ../engine/Runtime.hxx               
+  ../engine/VisitorSaveState.hxx 
+  ../engine/DataFlowPort.hxx         
+  ../engine/InGate.hxx          
+  ../engine/OptimizerAlg.hxx                
+  ../engine/Scheduler.hxx             
+  ../engine/WhileLoop.hxx 
+  ../engine/DataPort.hxx             
+  ../engine/InlineNode.hxx      
+  ../engine/OptimizerLoop.hxx               
+  ../engine/ServiceInlineNode.hxx     
+  ../engine/ComponentDefinition.hxx 
+  ../engine/DataStreamPort.hxx       
+  ../engine/InPort.hxx          
+  ../engine/OutGate.hxx                     
+  ../engine/ServiceNode.hxx           
+  ../engine/Catalog.hxx  
+  ../engine/PropertyInterface.hxx    
+  ../engine/AnyOutputPort.hxx   
+  ../engine/Pool.hxx
+  ../engine/InPropertyPort.hxx
 )
 SET(SWIGINCLUDES ${ENGINEINCLUDES} 
 		 "${PROJECT_SOURCE_DIR}/src/bases/yacsconfig.h" 
 		 "ExecutorSwig.hxx")
 SWIG_ADD_MODULE(pilot   python pilot.i ExecutorSwig.cxx)
 SWIG_ADD_MODULE(pypilot python pypilot.i)
-ADD_DEPENDENCIES(_pilot pilot.i engtypemaps.i docengine.i ${SWIGINCLUDES})
-ADD_DEPENDENCIES(_pypilot pypilot.i pilot.i engtypemaps.i _pilot ${SWIGINCLUDES})
+ADD_CUSTOM_TARGET(_pilot_files DEPENDS pilot.i engtypemaps.i docengine.i ${SWIGINCLUDES})
+ADD_CUSTOM_TARGET(_pypilot_files DEPENDS pypilot.i pilot.i engtypemaps.i _pilot ${SWIGINCLUDES})
+ADD_DEPENDENCIES(_pilot _pilot_files)
+ADD_DEPENDENCIES(_pypilot _pypilot_files)
 
 SWIG_LINK_LIBRARIES(pilot   "${_link_LIBRARIES}")
 SWIG_LINK_LIBRARIES(pypilot "${_link_LIBRARIES}")

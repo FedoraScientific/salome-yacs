@@ -84,12 +84,13 @@ SET(SWIGINCLUDES
   ${PROJECT_SOURCE_DIR}/src/yacsloader/ProcCataLoader.hxx
   )
 SWIG_ADD_MODULE(loader python loader.i)
-ADD_DEPENDENCIES(_loader 
+ADD_CUSTOM_TARGET(_loader_files DEPENDS
 		   loader.i 
 		   ${PROJECT_SOURCE_DIR}/src/engine_swig/pilot.i 
 		   ${PROJECT_SOURCE_DIR}/src/engine_swig/engtypemaps.i 
 		   docyacsloader.i 
 		   ${SWIGINCLUDES})
+ADD_DEPENDENCIES(_loader _loader_files)
 
 SWIG_LINK_LIBRARIES(loader ${_link_LIBRARIES})
 IF(WIN32)

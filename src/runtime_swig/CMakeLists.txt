@@ -94,12 +94,13 @@ SET(SWIGINCLUDES
   ${PROJECT_SOURCE_DIR}/src/runtime/SalomeOptimizerLoop.hxx
   )
 SWIG_ADD_MODULE(SALOMERuntime python SALOMERuntime.i)
-ADD_DEPENDENCIES(_SALOMERuntime 
+ADD_CUSTOM_TARGET(_SALOMERuntime_files DEPENDS
 		   SALOMERuntime.i 
 		   ${PROJECT_SOURCE_DIR}/src/engine_swig/pilot.i 
 		   ${PROJECT_SOURCE_DIR}/src/engine_swig/engtypemaps.i 
 		   docruntime.i 
 		   ${SWIGINCLUDES})
+ADD_DEPENDENCIES(_SALOMERuntime _SALOMERuntime_files)
 
 SWIG_LINK_LIBRARIES(SALOMERuntime ${_link_LIBRARIES})
 IF(WIN32)
