@@ -30,7 +30,7 @@
 #include "FormEditTree.hxx"
 #include "GraphicsView.hxx"
 #include "GuiExecutor.hxx"
-#include "chrono.hxx"
+#include "YACSchrono.hxx"
 #include <QGraphicsScene>
 #include <QItemSelectionModel>
 #include <QStackedWidget>

@@ -18,7 +18,7 @@
 //
 
 #define CHRONODEF
-#include "chrono.hxx"
+#include "YACSchrono.hxx"
 
 #include "SceneBlocItem.hxx"
 #include "SceneComposedNodeItem.hxx"

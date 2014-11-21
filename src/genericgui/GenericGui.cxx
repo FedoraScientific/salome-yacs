@@ -51,7 +51,7 @@
 #include "TypeCode.hxx"
 #include "LinkInfo.hxx"
 #include "LogViewer.hxx"
-#include "chrono.hxx"
+#include "YACSchrono.hxx"
 #include "Resource.hxx"
 #include "Message.hxx"
 #include "ListJobs_GUI.hxx"

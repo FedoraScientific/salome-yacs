@@ -17,7 +17,7 @@
 // See http://www.salome-platform.org/ or email : webmaster.salome@opencascade.com
 //
 
-#include "chrono.hxx"
+#include "YACSchrono.hxx"
 
 //#define _DEVDEBUG_
 #include "YacsTrace.hxx"
