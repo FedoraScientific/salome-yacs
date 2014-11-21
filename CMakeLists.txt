@@ -191,9 +191,9 @@ IF( SALOME_YACS_USE_KERNEL )
   SET(SALOME_INSTALL_PYTHON "${SALOME_INSTALL_PYTHON}" CACHE PATH "Install path: SALOME Python stuff")
   SET(SALOME_INSTALL_PYTHON_SHARED "${SALOME_INSTALL_PYTHON_SHARED}" CACHE PATH 
     "Install path: SALOME Python shared modules")
-  SET(SALOME_INSTALL_CMAKE_LOCAL adm/cmake CACHE PATH 
+  SET(SALOME_INSTALL_CMAKE_LOCAL share/salome/adm/cmake_files CACHE PATH 
     "Install path: local SALOME CMake files") 
-  SET(SALOME_INSTALL_AMCONFIG_LOCAL adm/unix CACHE PATH
+  SET(SALOME_INSTALL_AMCONFIG_LOCAL share/salome/adm/unix CACHE PATH
     "Install path: local SALOME config files (obsolete, to be removed)")
 
   SET(SALOME_INSTALL_RES "${SALOME_INSTALL_RES}" CACHE PATH "Install path: SALOME resources")
