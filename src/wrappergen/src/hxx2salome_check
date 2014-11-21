@@ -105,7 +105,7 @@ validate_generation_choices()
        then
           arr[$iCORBA]="no"
        else
-           if [ ! -f ${KERNEL_ROOT_DIR}/idl/salome/SALOME_Component.idl ]
+           if [ ! -f ${KERNEL_ROOT_DIR}/${SALOME_INSTALL_IDLS}/SALOME_Component.idl ]
            then
                arr[$iCORBA]="no"
            fi

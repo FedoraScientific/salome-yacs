@@ -98,7 +98,7 @@ generate_corba_module_source()
    if [ ${USE_MED} == 1 ]
        then
        sed "s?USE_MED=0?USE_MED=1\nIDL_FILES += MED.idl\nIDL_SRC += MEDSK.cc?" ${CLASS_NAME}_SRC/idl/Makefile.am > tmpfile
-       sed "s?XXX?XXX -DUSE_MED -I\${MED_ROOT_DIR}/idl/salome?" tmpfile > tmp2file
+       sed "s?XXX?XXX -DUSE_MED -I\${MED_ROOT_DIR}/${SALOME_INSTALL_IDLS}?" tmpfile > tmp2file
        mv tmp2file ${CLASS_NAME}_SRC/idl/Makefile.am
    fi
 
@@ -131,12 +131,12 @@ generate_corba_module_source()
    fi
    if [ ${USE_MED} == 1 ]
    then
-       idlparser="${idlparser} -DUSE_MED=1 -I${MED_ROOT_DIR}/idl/salome"
+       idlparser="${idlparser} -DUSE_MED=1 -I${MED_ROOT_DIR}/${SALOME_INSTALL_IDLS}"
    fi
 
    cd ${CLASS_NAME}_SRC/resources
    VER=`cat ${KERNEL_ROOT_DIR}/bin/salome/VERSION | awk ' { print $NF }'` # extract number of version 
-   ${idlparser} -Wbcatalog=tmp.xml,icon=${CLASS_NAME}.png,version=${VER} -I${KERNEL_ROOT_DIR}/idl/salome ../idl/${CLASS_NAME}_Gen.idl >& /dev/null | tee  hxx2salome_journal
+   ${idlparser} -Wbcatalog=tmp.xml,icon=${CLASS_NAME}.png,version=${VER} -I${KERNEL_ROOT_DIR}/${SALOME_INSTALL_IDLS} ../idl/${CLASS_NAME}_Gen.idl >& /dev/null | tee  hxx2salome_journal
    cat tmp.xml | sed 's/_Gen//g' > ${CLASS_NAME}Catalog.xml
    \rm -f tmp.xml
 

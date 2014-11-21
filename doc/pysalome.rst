@@ -93,7 +93,7 @@ The idl directory requires a CMakeLists.txt that must make the compilation of th
 and install all the generated files in the right module installation directories.
 This is done by using OMNIORB_ADD_MODULE() CMake macro::
 
-   OMNIORB_ADD_MODULE(SalomeIDLPYHELLO PYHELLO_Gen.idl ${KERNEL_ROOT_DIR}/idl/salome ${KERNEL_SalomeIDLKernel})
+   OMNIORB_ADD_MODULE(SalomeIDLPYHELLO PYHELLO_Gen.idl ${KERNEL_ROOT_DIR}/${SALOME_INSTALL_IDLS} ${KERNEL_SalomeIDLKernel})
    INSTALL(TARGETS SalomeIDLPYHELLO EXPORT ${PROJECT_NAME}TargetGroup DESTINATION ${SALOME_INSTALL_LIBS})
 
 The idl file itself must define a CORBA module for which the name must be different from the module 

@@ -101,7 +101,7 @@ CMAKE_DEPENDENT_OPTION(SALOME_YACS_USE_QSCINTILLA "Use QScintilla" ON
 
 # Advanced options:
 IF(SALOME_YACS_USE_KERNEL AND SALOME_YACS_USE_DSC)
-  IF(EXISTS ${KERNEL_ROOT_DIR}/idl/salome/DSC_Engines.idl)
+  IF(EXISTS ${KERNEL_ROOT_DIR}/${SALOME_INSTALL_IDLS}/DSC_Engines.idl)
     ADD_DEFINITIONS(-DDSC_PORTS)
   ELSE()
     MESSAGE(FATAL_ERROR "We absolutely need a KERNEL DSC extension. Please rebuild KERNEL with DSC support or turn option SALOME_YACS_USE_DSC to OFF !")
